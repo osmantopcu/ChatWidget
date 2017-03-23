@@ -1,0 +1,125 @@
+/* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Jaldi", sans-serif;
+  color: #ffffff;
+  background-color: #a0f6aa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #a0f6aa;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  width: 90%;
+  margin: 2em auto 0;
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+@media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 3.2rem;
+  }
+}
+
+input {
+  font-family: "Jaldi", sans-serif;
+  font-size: 1.6rem;
+}
+
+/* -------------------------------- 
+
+Main Components 
+
+-------------------------------- */
+.cd-accordion-menu {
+  width: 100%;
+  max-width: 600px;
+  background: #fafafa;
+}
+.cd-accordion-menu ul {
+  /* by default hide all sub menus */
+  display: none;
+}
+.cd-accordion-menu li {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cd-accordion-menu input[type=checkbox] {
+  /* hide native checkbox */
+  position: absolute;
+  opacity: 0;
+}
+.cd-accordion-menu label, .cd-accordion-menu a {
+  position: relative;
+  display: block;
+  background: #9297A4;
+  color: #ffffff;
+  font-size: 1.6rem;
+}
+.no-touch .cd-accordion-menu label:hover, .no-touch .cd-accordion-menu a:hover {
+  background: #C8CFD2;
+}
+.cd-accordion-menu label::before, .cd-accordion-menu label::after, .cd-accordion-menu a::after {
+  /* icons */
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.cd-accordion-menu label {
+  cursor: pointer;
+}
+.cd-accordion-menu ul label,
+.cd-accordion-menu ul a {
+  background: #ADB5BD;
+  border-top: 1px #C8CFD2 solid;
+ }
+.no-touch .cd-accordion-menu ul label:hover, .no-touch
+.cd-accordion-menu ul a:hover {
+  background: #ADB5BD;
+  border-top: 1px #C8CFD2 solid;
+}
+.cd-accordion-menu > li:last-of-type > label,
+.cd-accordion-menu > li:last-of-type > a,
+.cd-accordion-menu > li > ul > li:last-of-type label,
+.cd-accordion-menu > li > ul > li:last-of-type a {
+  box-shadow: none;
+}
+@media only screen and (min-width: 600px) {
+  .cd-accordion-menu label, .cd-accordion-menu a {
+    font-size: 13px;
+    height: 30px;
+    padding: 7px;
+  }
+}
+
+
+li.has-children ul li a {
+  background-color: #A4B8C4!important;
+}
