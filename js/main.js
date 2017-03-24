@@ -1,32 +1,33 @@
-jQuery(document).ready(function(){
-	var accordionsMenu = $('.cd-accordion-menu');
-	if( accordionsMenu.length > 0 ) {
-		
-		accordionsMenu.each(function(){
-			var accordion = $(this);
-			//detect change in the input[type="checkbox"] value
-			accordion.on('change', 'input[type="checkbox"]', function(){
-				var checkbox = $(this);
-				( checkbox.prop('checked') ) ? checkbox.siblings('ul').attr('style', 'display:none;').slideDown(300) : checkbox.siblings('ul').attr('style', 'display:block;').slideUp(300);
+$('#btnAction').click(function() {
+	$('#actions').slideToggle();
+	$('.selected').children('ul').slideToggle();
+	$('.selected').removeClass('selected');
 
-				if (checkbox.prop('checked')){
-					var list = checkbox.siblings('ul');
-					if (list.attr('id') != 'actions') {
-						
-							var selected = $('ul.selected');
-							selected.attr('style', 'display:block;').slideUp(300);
-							selected.removeClass('selected');
-						
-							list.addClass('selected');
-						 
-					}
-					
-				}
-				else {
-					
-				}
-				
-			});
-		});
+	if($(this).children('img').attr('src') == 'plus.png') {
+		$(this).children('img').attr('src','minus.png');
 	}
+	else {
+		$(this).children('img').attr('src','plus.png');
+	}
+	
+});
+
+$('#actions div').click(function() {
+	
+	if($(this).attr('class') != 'selected') {
+	$(this).children('ul').slideToggle();
+	$('.selected').not($(this)).children('ul').slideToggle();
+	$('.selected').removeClass('selected');
+	$(this).addClass('selected');
+}
+else {
+	$(this).children('ul').slideToggle();
+	$(this).removeAttr('class');
+
+}
+});
+
+$('#actions div ul li a').click(function() {
+	$(this).children('img').attr('src','minus.png');
+	SendMessage($(this).html()); $('#actions').hide();
 });

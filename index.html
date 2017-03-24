@@ -5,9 +5,6 @@
 	<title>BDost</title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-		<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-
 	<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
@@ -18,101 +15,84 @@
 			
 			<a href="#" class="chat-close"></a>
 
-			<h4>Proliant Agent</h4>
+			<h4>Deborah</h4>
 
 			<!--<span class="chat-message-counter"></span>-->
 			
 		</header>
-<div class="quickActions" style="width: 100%; height: 30px; background-color: #f0f0f0;">
-	<ul class="cd-accordion-menu animated">
-		<li class="has-children">
-			<input type="checkbox" name ="group-1" id="group-1">
-			<label for="group-1">Quick Actions</label>
-
-      		<ul id="actions">
-      			<li class="has-children">
-      				<input type="checkbox" name ="sub-group-1" id="sub-group-1">
-					<label for="sub-group-1">PTO</label>
-
-					<ul>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">How much PTO do I have?</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I would like to request PTO</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I am sick today</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Can you make yesterday a sick day?</a></li>
-					</ul>
-      			</li>
-      			<li class="has-children">
-      				<input type="checkbox" name ="sub-group-2" id="sub-group-2">
-					<label for="sub-group-2">Pay Stubs</label>
-					<ul>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I want to see my paycheck stubs</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I want to see my last paycheck stub</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I want to get my last 3 stubs</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I want my stub from last week</a></li>
-					</ul>					
-					</li>
-					<li class="has-children">
-      				<input type="checkbox" name ="sub-group-3" id="sub-group-3">
-					<label for="sub-group-3">W2</label>
-					<ul>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I want to see my W-2</a></li>
-					</ul>
-					</li>
-					<li class="has-children">
-      				<input type="checkbox" name ="sub-group-4" id="sub-group-4">
-					<label for="sub-group-4">Work Schedule</label>
-					<ul>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I want to see my work schedule</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Am I working today?</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Am I working tomorrow?</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">See work schedule from last period</a></li>
-					</ul>
-					</li>
-					<li class="has-children">
-      				<input type="checkbox" name ="sub-group-5" id="sub-group-5">
-					<label for="sub-group-5">Time Cards</label>
-					<ul>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">I want to see my time card</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">How many hours have I worked this week?</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">What days have I worked this week?</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Did I work on wednesday?</a></li>
-					</ul>
-					<li class="has-children">
-      				<input type="checkbox" name ="sub-group-6" id="sub-group-6">
-					<label for="sub-group-6">Company Info</label>
-					<ul>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Company Name</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Company Address</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Company Federal ID Number</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Company Website</a></li>
-					</ul>
-					
-					</li>
-					<li class="has-children">
-      				<input type="checkbox" name ="sub-group-7" id="sub-group-7">
-					<label for="sub-group-7">Employee Info</label>
-					<ul>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">My Address</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">My Contact Info</a></li>
-						<li><a onclick="SendMessage($(this).html()); $('#actions').hide();" href="#">Emergency Contacts</a></li>
-					</ul>
-					
-					</li>
-					</li>
-      		</ul>
-		</li>
-
-		
-	</ul> <!-- cd-accordion-menu -->
-</div>
 		<div class="chat">
 			
 			<div class="chat-history"></div> <!-- end chat-history -->
 
 			<div class="form">
 
+					<div id="actions">
+				<div>
+					PTO
+					<ul>
+						<li><a href="#">How much PTO do I have?</a></li>
+						<li><a href="#">I would like to request PTO</a></li>
+						<li><a href="#">I am sick today</a></li>
+						<li><a href="#">Can you make yesterday a sick day?</a></li>
+					</ul>
+				</div>
+				<div>
+					Pay Stubs
+					<ul>
+						<li><a href="#">I want to see my paycheck stubs</a></li>
+						<li><a href="#">I want to see my last paycheck stub</a></li>
+						<li><a href="#">I want to get my last 3 stubs</a></li>
+						<li><a href="#">I want my stub from last week</a></li>
+					</ul>
+				</div>
+      			<div>
+					  W2
+					  <ul>
+						<li><a href="#">I want to see my W-2</a></li>
+					</ul>
+				  </div>
+				  <div>
+					  Work Schedule
+					  <ul>
+						<li><a href="#">I want to see my work schedule</a></li>
+						<li><a href="#">Am I working today?</a></li>
+						<li><a href="#">Am I working tomorrow?</a></li>
+						<li><a href="#">See work schedule from last period</a></li>
+					</ul>
+				  </div>
+				  <div>
+					  Time Cards
+					  <ul>
+						<li><a href="#">I want to see my time card</a></li>
+						<li><a href="#">How many hours have I worked this week?</a></li>
+						<li><a href="#">What days have I worked this week?</a></li>
+						<li><a href="#">Did I work on wednesday?</a></li>
+					</ul>
+				  </div>
+				  <div>
+					  Company Info
+					  <ul>
+						<li><a href="#">Company Name</a></li>
+						<li><a href="#">Company Address</a></li>
+						<li><a href="#">Company Federal ID Number</a></li>
+						<li><a href="#">Company Website</a></li>
+					</ul>
+				  </div>
+      				<div>
+						  Employee Info
+						  <ul>
+						<li><a href="#">My Address</a></li>
+						<li><a href="#">My Contact Info</a></li>
+						<li><a href="#">Emergency Contacts</a></li>
+					</ul>
 					
-					<input type="text" placeholder="Type your message." id="txtMessage">
+					  </div>
+					
+					
+					</div>
+				<div id="btnAction" style="width: 32px;height: 32px;float: left;margin-right: 3px;">
+					<img src="plus.png" width="32" height="32" />
+					</div>	<input type="text" placeholder="Type your message." id="txtMessage">
 				
 			</div>
 

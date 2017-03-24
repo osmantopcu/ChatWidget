@@ -50,7 +50,7 @@ function AddMessage(message) {
 };
 
 function AddFromBotMessage(message) {
-    var messageTemplate = '<div class="chat-message clearfix"><img style="float:left !important;" src="bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Proliant Agent</h5><p>' +
+    var messageTemplate = '<div class="chat-message clearfix"><img style="float:left !important;" src="bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
     message
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
     $('#message').val('');
@@ -150,7 +150,3 @@ function getBotResponse() {
 });
 }
   /****************menu  ********************/
-  $('li').click(function(ev) {
-    $(this).find('>ul').slideToggle();
-    ev.stopPropagation();
-});
