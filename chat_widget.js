@@ -26,7 +26,6 @@ setInterval(function() {
 	// });
 
 $('#txtMessage').click(function() {
-    console.log('clicked type');
     $('#actions').slideUp();
     $('#btnAction').children('img').attr('src','plus.png');
 
@@ -38,7 +37,7 @@ function keypressInBox(e) {
     var code = (e.keyCode ? e.keyCode : e.which);
     if (code == 13) {
         
-    var messageTemplate = '<div class="chat-message clearfix"><img src="gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:79%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
+    var messageTemplate = '<div class="chat-message clearfix"><img src="gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:83%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
     $('#txtMessage').val()
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
         $('.chat-history').append(messageTemplate);
@@ -53,7 +52,7 @@ function keypressInBox(e) {
 });
 
 function AddMessage(message) {
-    var messageTemplate = '<div class="chat-message clearfix"><img src="gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:79%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
+    var messageTemplate = '<div class="chat-message clearfix"><img src="gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:83%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
     message
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
     messages += messageTemplate;
@@ -140,7 +139,8 @@ function getBotResponse() {
         'Content-Type':'application/json' },
     success: function(data, textStatus, jqXHR)
     {
-        messages = ''; 
+        messages = '';
+        var lastBotResponseTextLength = 10; 
         if(data.activities.length > 0) {
         $.each(data.activities, function(i, item) {
             if (item.from.id == 'user1') {
@@ -148,11 +148,16 @@ function getBotResponse() {
             }
             else {
                 AddMessageFromBot(item.text);
+                lastBotResponseTextLength = item.text.length; 
             }
 })
-            if (messages.length > $('.chat-history').html().length - $('.typing').html().length || item.text < 7) /*|| (messages.length < $('.chat-history').html().length && $('.chat-history').html().indexOf('typing...') > 0) */
-            {alert(messages.length + "---" + ($('.chat-history').html().length));
-                
+            var typingItemLength = 0;
+            if ($('.typing').html() != undefined) {
+                typingItemLength = $('.typing').html().length;
+            }            
+            
+            if (messages.length > $('.chat-history').html().length - typingItemLength || lastBotResponseTextLength < 9) /*|| (messages.length < $('.chat-history').html().length && $('.chat-history').html().indexOf('typing...') > 0) */
+            {   
                 $('.chat-history').html(messages);
                 scrollToBottom();
             }

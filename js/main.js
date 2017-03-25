@@ -29,5 +29,11 @@ else {
 
 $('#actions div ul li a').click(function() {
 	$('#btnAction').children('img').attr('src','plus.png');
-	SendMessage($(this).html()); $('#actions').hide();
+	var messageTemplate = '<div class="chat-message clearfix"><img src="gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:79%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
+    $(this).html()
+    +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
+        $('.chat-history').append(messageTemplate);
+       scrollToBottom();
+	SendMessage($(this).html()); $('#actions').slideUp();
+
 });
