@@ -31,7 +31,11 @@ $('#txtMessage').bind("keypress", {}, keypressInBox);
 function keypressInBox(e) {
     var code = (e.keyCode ? e.keyCode : e.which);
     if (code == 13) {
-        //AddMessage();
+        
+    var messageTemplate = '<div class="chat-message clearfix"><img src="gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:79%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
+    $('#txtMessage').val()
+    +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
+        $('.chat-history').append(messageTemplate);
         SendMessage($('#txtMessage').val());
         //AddFromBotMessage();
         $('#txtMessage').val('');
@@ -49,12 +53,12 @@ function AddMessage(message) {
     scrollToBottom();
 };
 
-function AddFromBotMessage(message) {
+function AddMessageFromBot(message) {
     var messageTemplate = '<div class="chat-message clearfix"><img style="float:left !important;" src="bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
     message
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
-    $('#message').val('');
     messages += messageTemplate;
+    return messageTemplate;
     scrollToBottom();
 };
 
@@ -88,6 +92,7 @@ function generateToken(){
         }
 
 function SendMessage(message){
+    
             var httpsURL = "https://directline.botframework.com/v3/directline/conversations/" + conversationId + "/activities";
             $.ajax({
     url : httpsURL,
@@ -103,7 +108,11 @@ function SendMessage(message){
         'Content-Type':'application/json' },
     success: function(data, textStatus, jqXHR)
     {
-        AddMessage(message);
+        var messageTemplate = '<div class="chat-message clearfix"><img style="float:left !important;" src="bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
+    'typing...'
+    +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
+    
+        $('.chat-history').append(messageTemplate);
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
@@ -131,7 +140,7 @@ function getBotResponse() {
                 AddMessage(item.text);
             }
             else {
-                AddFromBotMessage(item.text);
+                AddMessageFromBot(item.text);
             }
 })
             if (messages.length > $('.chat-history').html().length)

@@ -28,6 +28,6 @@ else {
 });
 
 $('#actions div ul li a').click(function() {
-	$(this).children('img').attr('src','minus.png');
+	$('#btnAction').children('img').attr('src','plus.png');
 	SendMessage($(this).html()); $('#actions').hide();
 });
