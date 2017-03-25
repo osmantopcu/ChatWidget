@@ -25,6 +25,12 @@ setInterval(function() {
 
 	// });
 
+$('#txtMessage').click(function() {
+    console.log('clicked type');
+    $('#actions').slideUp();
+    $('#btnAction').children('img').attr('src','plus.png');
+
+});
 
 $('#txtMessage').bind("keypress", {}, keypressInBox);
 
@@ -36,6 +42,7 @@ function keypressInBox(e) {
     $('#txtMessage').val()
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
         $('.chat-history').append(messageTemplate);
+       scrollToBottom();
         SendMessage($('#txtMessage').val());
         //AddFromBotMessage();
         $('#txtMessage').val('');
@@ -50,7 +57,6 @@ function AddMessage(message) {
     message
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
     messages += messageTemplate;
-    scrollToBottom();
 };
 
 function AddMessageFromBot(message) {
@@ -59,7 +65,7 @@ function AddMessageFromBot(message) {
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
     messages += messageTemplate;
     return messageTemplate;
-    scrollToBottom();
+    
 };
 
   function scrollToBottom() {
@@ -108,11 +114,12 @@ function SendMessage(message){
         'Content-Type':'application/json' },
     success: function(data, textStatus, jqXHR)
     {
-        var messageTemplate = '<div class="chat-message clearfix"><img style="float:left !important;" src="bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
+        var messageTemplate = '<div class="chat-message clearfix typing"><img style="float:left !important;" src="bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
     'typing...'
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
     
         $('.chat-history').append(messageTemplate);
+        scrollToBottom();
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
@@ -143,8 +150,9 @@ function getBotResponse() {
                 AddMessageFromBot(item.text);
             }
 })
-            if (messages.length > $('.chat-history').html().length)
-            {
+            if (messages.length > $('.chat-history').html().length - $('.typing').html().length || item.text < 7) /*|| (messages.length < $('.chat-history').html().length && $('.chat-history').html().indexOf('typing...') > 0) */
+            {alert(messages.length + "---" + ($('.chat-history').html().length));
+                
                 $('.chat-history').html(messages);
                 scrollToBottom();
             }
