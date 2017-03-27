@@ -27,7 +27,7 @@ setInterval(function() {
 
 $('#txtMessage').click(function() {
     $('#actions').slideUp();
-    $('#btnAction').children('img').attr('src','plus.png');
+    $('#btnAction').children('img').attr('src','asset/plus.png');
 
 });
 
@@ -37,7 +37,7 @@ function keypressInBox(e) {
     var code = (e.keyCode ? e.keyCode : e.which);
     if (code == 13) {
         
-    var messageTemplate = '<div class="chat-message clearfix"><img src="gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:83%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
+    var messageTemplate = '<div class="chat-message clearfix"><img src="asset/gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:83%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
     $('#txtMessage').val()
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
         $('.chat-history').append(messageTemplate);
@@ -52,14 +52,14 @@ function keypressInBox(e) {
 });
 
 function AddMessage(message) {
-    var messageTemplate = '<div class="chat-message clearfix"><img src="gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:83%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
+    var messageTemplate = '<div class="chat-message clearfix"><img src="asset/gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:83%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
     message
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
     messages += messageTemplate;
 };
 
 function AddMessageFromBot(message) {
-    var messageTemplate = '<div class="chat-message clearfix"><img style="float:left !important;" src="bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
+    var messageTemplate = '<div class="chat-message clearfix"><img style="float:left !important;" src="asset/bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
     message
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
     messages += messageTemplate;
@@ -113,7 +113,7 @@ function SendMessage(message){
         'Content-Type':'application/json' },
     success: function(data, textStatus, jqXHR)
     {
-        var messageTemplate = '<div class="chat-message clearfix typing"><img style="float:left !important;" src="bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
+        var messageTemplate = '<div class="chat-message clearfix typing"><img style="float:left !important;" src="asset/bot_gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5>Deborah</h5><p>' +
     'typing...'
     +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
     
@@ -172,3 +172,42 @@ function getBotResponse() {
 });
 }
   /****************menu  ********************/
+  $('#btnAction').click(function() {
+	$('#actions').slideToggle();
+	$('.selected').children('ul').slideToggle();
+	$('.selected').removeClass('selected');
+
+	if($(this).children('img').attr('src') == 'asset/plus.png') {
+		$(this).children('img').attr('src','asset/minus.png');
+	}
+	else {
+		$(this).children('img').attr('src','asset/plus.png');
+	}
+	
+});
+
+$('#actions div').click(function() {
+	
+	if($(this).attr('class') != 'selected') {
+	$(this).children('ul').slideToggle();
+	$('.selected').not($(this)).children('ul').slideToggle();
+	$('.selected').removeClass('selected');
+	$(this).addClass('selected');
+}
+else {
+	$(this).children('ul').slideToggle();
+	$(this).removeAttr('class');
+
+}
+});
+
+$('#actions div ul li a').click(function() {
+	$('#btnAction').children('img').attr('src','asset/plus.png');
+	var messageTemplate = '<div class="chat-message clearfix"><img src="asset/gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:79%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
+    $(this).html()
+    +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
+        $('.chat-history').append(messageTemplate);
+       scrollToBottom();
+	SendMessage($(this).html()); $('#actions').slideUp();
+
+});
