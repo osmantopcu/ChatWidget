@@ -81,7 +81,7 @@ function generateToken(){
     data : '',
     headers: { 
         'Accept': 'application/json',
-        'Authorization':'Bearer jDYqgBhqikk.cwA.XhU.ErMSLxTMz8wGt8Af_RFBudDG14b9YMc9tvx4Ps0txxU' },
+        'Authorization':'Bearer D9ngX-vYf0g.cwA.Rt0.RweRlmmFWptQFJPSya8Slry8M2iLaMyyjr-lBzrdqbQ' },
     success: function(data, textStatus, jqXHR)
     {
         conversationId = data.conversationId;
