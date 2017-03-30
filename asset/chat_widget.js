@@ -104,7 +104,7 @@ function SendMessage(message){
     type: "POST",
     dataType: 'json',
     data : JSON.stringify({"type": "message",
-                           "from": {"id": "user1"},
+                           "from": {"id": userGuid},
                            "text": message
                         }),
     headers: { 
@@ -143,7 +143,7 @@ function getBotResponse() {
         var lastBotResponseTextLength = 10; 
         if(data.activities.length > 0) {
         $.each(data.activities, function(i, item) {
-            if (item.from.id == 'user1') {
+            if (item.from.id == userGuid) {
                 AddMessage(item.text);
             }
             else {
