@@ -31,6 +31,19 @@ $('#txtMessage').click(function() {
 
 });
 
+$('#btnSend').click(function() {
+    if ($('#txtMessage').val().length == 0) return;
+
+    var messageTemplate = '<div class="chat-message clearfix"><img src="asset/gravatar.png" alt="" width="32" height="32"><div class="chat-message-content clearfix"><!--<span class="chat-time"></span>--><h5 style="width:83%; text-align:right;">You</h5><p style="text-align:right; margin-right:38px;">' +
+    $('#txtMessage').val()
+    +'</p></div> <!-- end chat-message-content --></div> <!-- end chat-message --><hr>';
+        $('.chat-history').append(messageTemplate);
+       scrollToBottom();
+        SendMessage($('#txtMessage').val());
+        //AddFromBotMessage();
+        $('#txtMessage').val('');
+});
+
 $('#txtMessage').bind("keypress", {}, keypressInBox);
 
 function keypressInBox(e) {
@@ -147,8 +160,21 @@ function getBotResponse() {
                 AddMessage(item.text);
             }
             else {
-                AddMessageFromBot(item.text);
-                lastBotResponseTextLength = item.text.length; 
+                console.log('item.text: ' + item.text);
+                
+                console.log('item: ', JSON.stringify(item));
+                if(item.text != undefined) {
+                    AddMessageFromBot(item.text);
+                    lastBotResponseTextLength = item.text.length; 
+                }
+                else {
+                    if (item.attachments.length > 0) {
+                        for (i = 0; i < item.attachments.length; i++) {
+                            AddMessageFromBot('<a href="'+ item.attachments[i].contentUrl +'" target="_blank">'+ item.attachments[i].contentUrl +'</a>');
+                        }
+                    }
+                }
+                
             }
 })
             var typingItemLength = 0;
