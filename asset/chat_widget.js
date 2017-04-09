@@ -14,11 +14,17 @@ if(window.mobileAndTabletcheck()) {
 $(window).on("orientationchange",function(){
     $('#txtMessage').css('width', (window.innerWidth - 100) + 'px');
   $('.chat-history').css('height',(window.innerHeight -121) + 'px');
+  $('#actions').css('width', (window.innerWidth) + 'px');
+$('.actionSubItem').css('width', (window.innerWidth) + 'px');
+
   scrollToBottom();
 });
 
 $('#txtMessage').css('width', (window.innerWidth - 100) + 'px');
 $('.chat-history').css('height',(window.innerHeight -121) + 'px');
+$('#actions').css('width', (window.innerWidth) + 'px');
+$('.actionSubItem').css('width', (window.innerWidth) + 'px');
+$('#actions .actionSubList .actionSubItem ul li a').css('width', (window.innerWidth) + 'px');
 
 }
     generateToken();

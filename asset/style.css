@@ -75,7 +75,7 @@
 	border-radius: 5px 5px 0 0;
 	color: #fff;
 	cursor: pointer;
-	padding: 16px 24px;
+	padding: 16px 24px 16px 12px;
 }
 
 #live-chat h4:before {
@@ -126,17 +126,12 @@
 }
 
 .chat-close {
-	background: #1B2845;
-	border-radius: 50%;
 	color: #fff;
-	display: block;
-	float: right;
-	font-size: 10px;
-	height: 16px;
-	line-height: 16px;
-	margin: 2px 0 0 0;
-	text-align: center;
-	width: 16px;
+    display: block;
+    float: left;
+    font-size: 13px;
+    text-align: center;
+    width: 44px;
 }
 
 .chat {
@@ -181,6 +176,7 @@
 	display: none;
 	border-radius: 5px 5px 0 0;
 	overflow-x: scroll;
+	padding-top: 4px;
 }
 
 .actionList {
@@ -189,7 +185,7 @@
 
 #actions .actionList .actionItem {
 	/*background-color: #2899C0;*/
-	border-right: 1px solid #207B9A;
+	/*border-right: 1px solid #207B9A;*/
 	padding: 5px;
 	color: #207B9A;
 	width: 85px;
@@ -197,14 +193,21 @@
 	text-align: center;
 }
 
+#actions .actionList .current {
+	border-radius: 15px 15px 15px 15px;
+	background-color: #2899C0;
+	color: #FFFFFF;
+}
+
 .actionSubList .actionSubItem {
-	margin: 20px;
+	margin-top: 20px;
 	display: none;
 	position: absolute;
 }
 
 .actionSubList .current{
 	display: block !important;
+
 }
 
 #actions .actionSubList .actionSubItem ul {
@@ -267,6 +270,10 @@
 
 	#live-chat input[type="text"] {
 		width: 69%;
+	}
+
+	#actions {
+		margin-left: -11px;
 	}
 
 }
